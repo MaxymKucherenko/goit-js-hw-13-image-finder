@@ -3,7 +3,6 @@ import { error, alert } from './notification';
 import {
   updateLi_item_Markup,
   cleanMarkupBefore,
-  scrollPage,
   hideBtnLoadMore,
 } from './updateMarkup';
 import refs from './refs';
@@ -45,8 +44,7 @@ refs.searcForm.addEventListener('submit', event => {
 });
 
 refs.loadMore.addEventListener('click', e => {
-  const top = e.target.getBoundingClientRect().top;
-  const width = e.target.getBoundingClientRect().width;
+  
   apiService.getResourse().then(data => {
     const mach = data.hits.length;
     alert({
@@ -57,8 +55,11 @@ refs.loadMore.addEventListener('click', e => {
     });
 
     updateLi_item_Markup(data);
-
-    scrollPage(top, width);
+    e.target.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+    });
+    
     if (mach < 12) {
       error(`На Ваш запрос
       ${apiService.search}
@@ -67,3 +68,4 @@ refs.loadMore.addEventListener('click', e => {
     }
   });
 });
+

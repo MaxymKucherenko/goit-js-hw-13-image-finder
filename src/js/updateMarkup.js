@@ -20,12 +20,4 @@ function cleanMarkupBefore() {
   refs.galleryUl.innerHTML = '';
 }
 
-function scrollPage(top, width) {
-  window.scrollTo({
-    top: top + window.pageYOffset,
-    width: width + window.pageXOffset,
-    behavior: 'smooth',
-  });
-}
-
-export { updateLi_item_Markup, cleanMarkupBefore, scrollPage, hideBtnLoadMore };
+export { updateLi_item_Markup, cleanMarkupBefore, hideBtnLoadMore };
